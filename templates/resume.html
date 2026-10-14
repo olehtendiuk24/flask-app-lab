@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 text-center mb-4">
+        <img src="{{ url_for('static', filename='images/profile.png') }}" class="img-fluid rounded-circle profile-img mb-3" alt="Фото профілю">
+        <h2>Software Engineer</h2>
+    </div>
+    <div class="col-md-8">
+        <section class="mb-4">
+            <h3>Про себе</h3>
+            <p>Студент спеціальності інженерія програмного забезпечення.</p>
+        </section>
+
+        <section class="mb-4">
+            <h3>Освіта</h3>
+            <p><strong>Університет:</strong> Карпатський національний університет імені Василя Стефаника</p>
+        </section>
+
+        <section class="mb-4">
+            <h3>Навички</h3>
+            <ul>
+                <li>Python / Flask</li>
+                <li>HTML5 / CSS3 / Bootstrap</li>
+                <li>Git / GitHub</li>
+                <li>Бази даних (SQL)</li>
+            </ul>
+        </section>
+
+        <section class="mb-4">
+            <h3>Технології</h3>
+            <p>Flask, Jinja2, Bootstrap 5, Gunicorn, Linux, Visual Studio Code / PyCharm.</p>
+        </section>
+
+        <section class="mb-4">
+            <h3>Досвід роботи / Проекти</h3>
+            <p>Розробка навчальних веб-додатків на Flask, робота з REST API та деплой сервісів на Render.</p>
+        </section>
+    </div>
+</div>
+{% endblock %}
