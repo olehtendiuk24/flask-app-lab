@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold">Ласкаво просимо на сайт!</h1>
+        <p class="col-md-8 fs-4">Це головна сторінка.</p>
+        <hr class="my-4">
+        <p><strong>Інформація про ваш браузер (User-Agent):</strong></p>
+        <code class="d-block p-3 bg-dark text-white rounded">{{ agent }}</code>
+    </div>
+</div>
+{% endblock %}
