@@ -1,6 +1,5 @@
-from flask import Flask, render_template
-
-app = Flask(__name__)
+from flask import request, render_template
+from app import app
 
 
 @app.route('/')
@@ -14,5 +13,7 @@ def contacts():
     return render_template('contacts.html', title='Контакти')
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/homepage')
+def home():
+    agent = request.user_agent
+    return render_template('homepage.html', title='Головна', agent=agent)
