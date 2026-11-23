@@ -1,0 +1,14 @@
+{
+    "products": {
+        "1": {
+            "id": 1,
+            "name": "ACER Nitro V15",
+            "content": "Ноутбук ігровий ACER Nitro V15",
+            "price": 1500.0,
+            "category": "Laptops",
+            "quantity": 1,
+            "image": "uploads/84c6f4d8d3e7476b9ac8d1aec6fab1b3.jpg",
+            "created_at": "2026-11-23 19:39:37"
+        }
+    }
+}

@@ -1,5 +1,11 @@
 from flask import Blueprint
 
-products_bp = Blueprint('products', __name__, template_folder='templates', url_prefix='/products')
+products_bp = Blueprint(
+    'products',
+    __name__,
+    template_folder='templates',
+    static_folder='static',
+    url_prefix='/product'
+)
 
 from . import views
