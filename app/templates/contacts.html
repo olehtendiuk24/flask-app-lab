@@ -1,24 +1,23 @@
 {% extends 'base.html' %}
+{% from '_render_field.html' import render_field %}
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-8">
-        <h2 class="mb-4">Зв'язатися зі мною</h2>
-        <form action="#" method="post" class="card p-4 shadow-sm">
-            <div class="mb-3">
-                <label for="name" class="form-label">Ваше ім'я</label>
-                <input type="text" class="form-control" id="name" placeholder="Введіть ім'я" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email адреса</label>
-                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Повідомлення</label>
-                <textarea class="form-control" id="message" rows="4" placeholder="Напишіть ваше повідомлення..." required></textarea>
-            </div>
-            <button type="button" class="btn btn-primary">Надіслати (Заглушка)</button>
-        </form>
+    <div class="col-md-7">
+        <div class="card p-4 shadow-sm">
+            <h2 class="mb-4 text-center">Зв'язатися з нами</h2>
+            <form action="{{ url_for('contacts') }}" method="POST" novalidate>
+                {{ form.hidden_tag() }}
+
+                {{ render_field(form.name, placeholder="Введіть ваше ім'я (4-10 символів)") }}
+                {{ render_field(form.email, placeholder="name@example.com") }}
+                {{ render_field(form.phone, placeholder="+380991234567") }}
+                {{ render_field(form.subject, class="form-select") }}
+                {{ render_field(form.message, rows=4, placeholder="Текст вашого повідомлення...") }}
+
+                {{ form.submit(class="btn btn-dark w-100 mt-2") }}
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
