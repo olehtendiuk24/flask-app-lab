@@ -1,14 +1,13 @@
 import logging
-from flask import request, render_template, redirect, url_for, flash
-from app import app
+from flask import request, render_template, redirect, url_for, flash, current_app as app
 from app.forms import ContactForm
 
-logging.basicConfig(
-    filename='contact_messages.log',
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    encoding='utf-8'
-)
+contact_logger = logging.getLogger('contact_logger')
+contact_logger.setLevel(logging.INFO)
+if not contact_logger.handlers:
+    file_handler = logging.FileHandler('contact_messages.log', encoding='utf-8')
+    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+    contact_logger.addHandler(file_handler)
 
 
 @app.route('/')
@@ -33,10 +32,11 @@ def contacts():
         subject = dict(form.subject.choices).get(form.subject.data)
         message = form.message.data
 
-        logging.info(f"Нове повідомлення | Name: {name} | Email: {email} | Phone: {phone} | Subject: {subject} | Message: {message}")
+        contact_logger.info(
+            f"Нове повідомлення | Name: {name} | Email: {email} | Phone: {phone} | Subject: {subject} | Message: {message}"
+        )
 
         flash(f"Дякуємо, {name}! Ваше повідомлення успішно відправлено та збережено.", "success")
-
         return redirect(url_for('contacts'))
     elif request.method == 'POST':
         flash("Будь ласка, виправте помилки у формі та спробуйте ще раз.", "danger")
