@@ -6,7 +6,7 @@
     <div class="col-md-7">
         <div class="card p-4 shadow-sm">
             <h2 class="mb-4 text-center">Зв'язатися з нами</h2>
-            <form action="{{ url_for('contacts') }}" method="POST" novalidate>
+            <form action="{{ url_for('main.contacts') }}" method="POST" novalidate>
                 {{ form.hidden_tag() }}
 
                 {{ render_field(form.name, placeholder="Введіть ваше ім'я (4-10 символів)") }}

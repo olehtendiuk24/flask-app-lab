@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% from '_render_field.html' import render_field %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card p-4 shadow-sm">
+            <h2 class="mb-4">{{ title }}</h2>
+            <form method="POST" novalidate>
+                {{ form.hidden_tag() }}
+
+                {{ render_field(form.title) }}
+                {{ render_field(form.content) }}
+
+                <div class="form-check mb-3">
+                    {{ form.is_active(class="form-check-input") }}
+                    {{ form.is_active.label(class="form-check-label") }}
+                </div>
+
+                {{ render_field(form.publish_date) }}
+                {{ render_field(form.category, class="form-select") }}
+
+                <div class="d-flex gap-2 mt-3">
+                    {{ form.submit(class="btn btn-primary") }}
+                    <a href="{{ url_for('posts.all_posts') }}" class="btn btn-secondary">Return to Posts</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

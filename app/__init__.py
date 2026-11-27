@@ -32,11 +32,12 @@ def create_app(config_name=None):
         return render_template('404.html'), 404
 
     with app.app_context():
-        from app import views
+        from app.views import main_bp
         from app.users import users_bp
         from app.products import products_bp
         from app.posts import post_bp
 
+        app.register_blueprint(main_bp)
         app.register_blueprint(users_bp)
         app.register_blueprint(products_bp)
         app.register_blueprint(post_bp)
