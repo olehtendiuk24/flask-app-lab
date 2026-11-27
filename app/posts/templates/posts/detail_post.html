@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card p-4 shadow-sm">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="badge bg-info text-dark">{{ post.category }}</span>
+        <small class="text-muted">Author: <strong>{{ post.author }}</strong> | Published: {{ post.posted.strftime('%Y-%m-%d %H:%M') if post.posted else '' }}</small>
+    </div>
+    <h1 class="mb-3">{{ post.title }}</h1>
+    <hr>
+    <p class="fs-5" style="white-space: pre-line;">{{ post.content }}</p>
+
+    <div class="d-flex gap-2 mt-4">
+        <a href="{{ url_for('posts.update_post', id=post.id) }}" class="btn btn-warning">Edit</a>
+        <a href="{{ url_for('posts.delete_post', id=post.id) }}" class="btn btn-danger">Delete</a>
+        <a href="{{ url_for('posts.all_posts') }}" class="btn btn-secondary ms-auto">← Back to Posts</a>
+    </div>
+</div>
+{% endblock %}
